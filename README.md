@@ -1,7 +1,7 @@
 # Proyecto JAVA
 
 ## Proyecto
-Proyecto en el que cogemos la idea de Catsharks.org y observadoresdelmar.es para crear un programa en Java.
+Proyecto en el que cogemos la idea de Catsharks.org y observadoresdelmar.es para creamos un programa en Java con el que podemos insertar datos de avistaciones de diferentes animales de manera local.
 
 ## Requisitos del Programa
 - Implementación de interficie gráfica con los modulos javax.swing y java.awt.
