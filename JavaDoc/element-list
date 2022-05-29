@@ -1,0 +1,4 @@
+module:cat.institutmvm.applicacio
+cat.institutmvm.applicacio.entities
+module:com.institutmvm.controller
+com.institutmvm.controller.ui
