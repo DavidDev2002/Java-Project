@@ -20,9 +20,8 @@ public class Pajaro extends AnimalBase{
      * @param direccionViento
      * @param embarcaciones
      * @param tamano
-     * @param parasitos
      */
-    public Pajaro(String especie, String habitat, String tiempoNavegacion, String genero, String horaLlegada, String viento, String nubosidad, String direccionViento, float embarcaciones, float tamano, boolean parasitos) {
+    public Pajaro(String especie, String habitat, String tiempoNavegacion, String genero, String horaLlegada, String viento, String nubosidad, String direccionViento, float embarcaciones, float tamano) {
         super(especie, habitat, tiempoNavegacion, genero, horaLlegada, viento, nubosidad, direccionViento, embarcaciones, tamano);
         this.setParasitos(parasitos);
     }

@@ -21,13 +21,9 @@ public class Pez extends AnimalBase{
      * @param direccionViento
      * @param embarcaciones
      * @param tamano
-     * @param profundidad
-     * @param n_anzuelos
-     * @param anzuelos
-     * @param t_anzuelo
      */
 
-    public Pez(String especie, String habitat, String tiempoNavegacion, String genero, String horaLlegada, String viento, String nubosidad, String direccionViento, float embarcaciones, float tamano, int profundidad, int n_anzuelos, boolean anzuelos, String t_anzuelo) {
+    public Pez(String especie, String habitat, String tiempoNavegacion, String genero, String horaLlegada, String viento, String nubosidad, String direccionViento, float embarcaciones, float tamano) {
         super(especie, habitat, tiempoNavegacion, genero, horaLlegada, viento, nubosidad, direccionViento, embarcaciones, tamano);
         this.setProfundidad(profundidad);
         this.setN_anzuelos(n_anzuelos);

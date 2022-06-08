@@ -2,6 +2,9 @@ package com.institutmvm.controller.ui;
 
 import javax.swing.*;
 import cat.institutmvm.applicacio.entities.Pajaro;
+import cat.institutmvm.applicacio.entities.Pez;
+import cat.institutmvm.applicacio.entities.Tiburon;
+import com.institutmvm.controller.utils.Database;
 
 import java.awt.*;
 
@@ -16,6 +19,9 @@ public class TiposEspecie {
     private static JTextField tamano = new JTextField();
     private static JTextField embarcacionces = new JTextField();
     private static JTextField especie = new JTextField();
+    private static JComboBox selector1 = new JComboBox();
+    private static JComboBox selector2 = new JComboBox();
+
 
     /**
      * Panel Principal en el que nos basamos para los otros formularios
@@ -34,7 +40,7 @@ public class TiposEspecie {
 
         String[] genero_P = {"Maculino", "Femenino","Undefined"};
         panelEs.add(new JLabel("Genero "));
-        JComboBox selector1 = new JComboBox(genero_P);
+        selector1 = new JComboBox(genero_P);
         panelEs.add(selector1);
 
         panelEs.add(new JLabel("Hora de llegada "));
@@ -51,7 +57,7 @@ public class TiposEspecie {
 
         String[] viento_P = {"Norte", "Sur", "Este", "Oeste"};
         panelEs.add(new JLabel("Direccion del viento "));
-        JComboBox selector2 = new JComboBox(viento_P);
+        selector2 = new JComboBox(viento_P);
         panelEs.add(selector2);;
 
         panelEs.add(new JLabel("Embarcaciones "));
@@ -100,6 +106,32 @@ public class TiposEspecie {
                 JOptionPane.showMessageDialog(null,"Procura llenar todos los campos", "Error",JOptionPane.ERROR_MESSAGE);
                 EspeciePajaro();
             }
+
+
+            Float tama = Float.valueOf(0);
+            if (!tamano.getText().matches("[a-zA-Z]+")){
+                tama = Float.parseFloat(tamano.getText());
+            }
+
+            Float embar = Float.valueOf(0);
+            if (!embarcacionces.getText().matches("[a-zA-Z]+")){
+                embar = Float.parseFloat(embarcacionces.getText());
+            }
+            String direccion_viento = selector1.getSelectedItem().toString();
+            String genero = selector2.getSelectedItem().toString();
+
+
+            Pajaro DATOS_BD_PAJARO = new Pajaro(especie.getText(),genero,habitat.getText(),tiempoNavegacion.getText(),horaLlegada.getText(),viento.getText(),
+                    nubosidad.getText(),direccion_viento,tama,embar);
+
+
+            if (bool_T.isSelected()){
+                DATOS_BD_PAJARO.setParasitos(true);
+            }
+
+            Database insert = new Database();
+
+            insert.insertPajaro(DATOS_BD_PAJARO);
         }
 
     }
@@ -153,7 +185,49 @@ public class TiposEspecie {
                 JOptionPane.showMessageDialog(null,"Procura llenar todos los campos", "Error",JOptionPane.ERROR_MESSAGE);
                 EspeciePez();
             }
+
+            Float tama = Float.valueOf(0);
+            if (!tamano.getText().matches("[a-zA-Z]+")){
+                tama = Float.parseFloat(tamano.getText());
+            }
+
+            Float embar = Float.valueOf(0);
+            if (!embarcacionces.getText().matches("[a-zA-Z]+")){
+                embar = Float.parseFloat(embarcacionces.getText());
+            }
+            String direccion_viento = selector1.getSelectedItem().toString();
+            String genero = selector2.getSelectedItem().toString();
+
+
+            Pez DATOS_BD_PEZ = new Pez(especie.getText(),genero,habitat.getText(),tiempoNavegacion.getText(),horaLlegada.getText(),viento.getText(),
+                    nubosidad.getText(),direccion_viento,tama,embar);
+
+
+            if (bool_T.isSelected()){
+                DATOS_BD_PEZ.setAnzuelos(true);
+            }
+
+            int n_anzu = 0;
+            if (!n_anzuelos.getText().matches("[a-zA-Z]+")){
+                n_anzu = Integer.parseInt(n_anzuelos.getText());
+            }
+            DATOS_BD_PEZ.setN_anzuelos(n_anzu);
+
+            int profun = 0;
+            if (!profundidad.getText().matches("[a-zA-Z]+")){
+                profun = Integer.parseInt(profundidad.getText());
+            }
+            DATOS_BD_PEZ.setProfundidad(profun);
+
+            DATOS_BD_PEZ.setT_anzuelo(t_anzuelos.getText());
+
+            Database insert = new Database();
+
+            insert.insertPez(DATOS_BD_PEZ);
+
         }
+
+
     }
     /**
      * Funcion que genera un formulario para introducir datos de Tiburon
@@ -161,29 +235,13 @@ public class TiposEspecie {
     public static void EspecieTiburon(){
         JPanel panelT = EstandartEspecie(6,2);
         JTextField edad = new JTextField();
+        JTextField heridas = new JTextField();
 
         panelT.add(new JLabel("Edad "));
         panelT.add(edad);
 
         panelT.add(new JLabel("Heridas "));
-        panelT.add(Box.createRigidArea(new Dimension(30,10)));
-
-        bool_T = new JRadioButton("Sí ");
-        bool_F = new JRadioButton("No ");
-
-        bool_T.addChangeListener(l -> {
-            if (bool_T.isSelected()) {
-                bool_F.setSelected(false);
-            }
-        });
-        panelT.add(bool_T);
-        bool_F.addChangeListener(l -> {
-            if (bool_F.isSelected()) {
-                bool_T.setSelected(false);
-            }
-        });
-        panelT.add(bool_F);
-
+        panelT.add(heridas);
 
         /**
          * Función con la que comprobamos si hay campos vacíos
@@ -199,6 +257,29 @@ public class TiposEspecie {
                 EspecieTiburon();
             }
         }
+        Float tama = Float.valueOf(0);
+        if (!tamano.getText().matches("[a-zA-Z]+")){
+            tama = Float.parseFloat(tamano.getText());
+        }
+
+        Float embar = Float.valueOf(0);
+        if (!embarcacionces.getText().matches("[a-zA-Z]+")){
+            embar = Float.parseFloat(embarcacionces.getText());
+        }
+        String direccion_viento = selector1.getSelectedItem().toString();
+        String genero = selector2.getSelectedItem().toString();
+
+
+        Tiburon DATOS_BD_TIBURON = new Tiburon(especie.getText(),genero,habitat.getText(),tiempoNavegacion.getText(),horaLlegada.getText(),viento.getText(),
+                nubosidad.getText(),direccion_viento,tama,embar);
+
+
+        DATOS_BD_TIBURON.setEdad(edad.getText());
+        DATOS_BD_TIBURON.setHeridas(heridas.getText());
+
+        Database insert = new Database();
+
+        insert.insertTiburon(DATOS_BD_TIBURON);
     }
 
 }

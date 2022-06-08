@@ -19,10 +19,8 @@ public class Tiburon extends AnimalBase{
      * @param direccionViento
      * @param embarcaciones
      * @param tamano
-     * @param heridas
-     * @param edad
      */
-    public Tiburon(String especie, String habitat, String tiempoNavegacion, String genero, String horaLlegada, String viento, String nubosidad, String direccionViento, float embarcaciones, float tamano, String heridas, String edad) {
+    public Tiburon(String especie, String habitat, String tiempoNavegacion, String genero, String horaLlegada, String viento, String nubosidad, String direccionViento, float embarcaciones, float tamano) {
         super(especie, habitat, tiempoNavegacion, genero, horaLlegada, viento, nubosidad, direccionViento, embarcaciones, tamano);
         this.setHeridas(heridas);
         this.setEdad(edad);
